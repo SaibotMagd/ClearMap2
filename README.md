@@ -81,7 +81,7 @@ on how to [install](https://christophkirst.github.io/ClearMap2Documentation/html
 
 Tutorials for [TubeMap](https://christophkirst.github.io/ClearMap2Documentation/html/tubemap.html) 
 and [CellMap](https://christophkirst.github.io/ClearMap2Documentation/html/tubemap.html) are
-avaialbe as [jupyer](https://jupyter.org/) notebooks:
+available as [jupyer](https://jupyter.org/) notebooks:
   
   * [TubeMap](https://christophkirst.github.io/ClearMap2Documentation/html/TubeMap.html)
   
@@ -99,7 +99,7 @@ For experimental protocols also refer to [idisco.info](http:://idisco.info)
 [News and Media](https://christophkirst.github.io/ClearMap2Documentation/html/media.html)
 =========================================================================================
 
-ClearMap has been featured in differnet articles, interviews and a TEDx talk:
+ClearMap has been featured in different articles, interviews and a TEDx talk:
 
 <p align="center">
 <a href="https://www.ted.com/talks/christoph_kirst_a_transparent_journey_into_the_brain_and_its_flexible_function">
