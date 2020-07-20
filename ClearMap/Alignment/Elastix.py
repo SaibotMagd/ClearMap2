@@ -291,7 +291,7 @@ def set_path_transform_files(result_directory):
   Notes
   -----
   When elastix is not run in the directory of the transformation files
-  the aboslute path needs to be given in each transformation file 
+  the absolute path needs to be given in each transformation file 
   to point to the subsequent transformation files. This is done via this 
   routine.
   """
@@ -571,7 +571,7 @@ def transform(source, sink = [], transform_parameter_file = None, transform_dire
     Result directory of elastix alignment. 
     If None the transform_parameter_file has to be given.
   result_directory : str or None
-    The directorty for the transformix results.
+    The directory for the transformix results.
       
   Returns
   -------
