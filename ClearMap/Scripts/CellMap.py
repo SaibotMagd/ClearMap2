@@ -56,7 +56,7 @@ if __name__ == "__main__":
   
   #%% Initialize alignment 
   
-  #init atals and reference files
+  #init atlas and reference files
   annotation_file, reference_file, distance_file=ano.prepare_annotation_files(
       slicing=(slice(None),slice(None),slice(0,256)), orientation=(1,-2,3),
       overwrite=False, verbose=True);
@@ -71,7 +71,7 @@ if __name__ == "__main__":
   ### Data conversion
   ############################################################################### 
   
-  #%% Convet raw data to npy file     
+  #%% Convert raw data to npy file     
                
   source = ws.source('raw');
   sink   = ws.filename('stitched')
