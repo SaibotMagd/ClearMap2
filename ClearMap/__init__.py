@@ -28,7 +28,7 @@ structure of the code will enable many new modules to be added to ClearMap to
 broaden the range of applications to different types of biological objects or
 structures.
 
-More informatoin and downloads for *ClearMap* can be found in our 
+More information and downloads for *ClearMap* can be found in our 
 `repository <http://www.github.com/ChristophKirst/ClearMap2>`_.
 
 
