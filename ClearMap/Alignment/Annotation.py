@@ -7,7 +7,7 @@ Module to handle label and annotation info from Allen Brain Atlas (v2).
  
 Notes
 -----      
-  - The files containting annotation information is assumed to be in the path 
+  - The files containing annotation information is assumed to be in the path 
     stored in :const:`atlas_path`, which defaults to the resource path 
     :const:`ClearMap.Settings.resources_path`.
     
@@ -188,7 +188,7 @@ class Annotation(object):
     Arguments
     ---------
     label_file : str
-      File with label infomration in json format.
+      File with label information in json format.
     """
     self.initialize(label_file=label_file, extra_label=extra_label, annotation_file=annotation_file);
   
@@ -208,7 +208,7 @@ class Annotation(object):
     self.annotation_file = annotation_file;
     self.extra_label = extra_label;
     
-    #initialze label tree    
+    #initialize label tree    
     with open(label_file) as dfile:
       aba_json = dfile.read();
       dfile.close();
@@ -425,7 +425,7 @@ def label_points(points, annotation_file = None, invalid = 0, key = 'order', lev
   points : array 
     Array of nxdim point coordinates to be labeled.
   annotation_file : str
-    File name of the atals annotation.
+    File name of the atlas annotation.
   invalid : int
     Label for invalid points.
   key : str
@@ -475,8 +475,8 @@ def convert_label(label, key = 'id', value = 'order', level = None, method = Non
     The key corresponding to the label.
   value : str
     The key to ocnvert the lable to.
-  level : nt or None
-    Convert at this level of the hierarchy. I fNone use full hierarchy.
+  level : int or None
+    Convert at this level of the hierarchy. If 'None' use full hierarchy.
   method : 'map' or 'dictionary'
     Convert labels using a mapping array or a dictionary. Depending on the keys 
     either can be faster for large data sets.
@@ -502,8 +502,8 @@ def convert_label_to_color(label, key = 'id', level = None, alpha = True, as_int
     List of labels to convert.
   key : str
     The key corresponding to the label.
-  level : nt or None
-    Convert at this level of the hierarchy. I fNone use full hierarchy.
+  level : int or None
+    Convert at this level of the hierarchy. If 'None' use full hierarchy.
   alpha : bool
     If True, return rgba values.
   as_int : bool
@@ -639,7 +639,7 @@ def write_color_annotation(filename, annotation_file = None):
   filename : str
     The name of the color palette file.
   annotation_file : str
-    File name of the atals annotation. 
+    File name of the atlas annotation. 
   
   Returns
   -------
@@ -681,7 +681,7 @@ def prepare_annotation_files(slicing = None, orientation = None,
   directory : str or None
     The target directory. If None, use ClearMap resources folder.
   postfix : str or None
-    Use this postfix for the cropped annotation file. If None and automatic 
+    Use this postfix for the cropped annotation file. If 'None' and automatic 
     label is choosen.
   annotation_file : str or None
     The annotation file to use.
@@ -756,7 +756,7 @@ def prepare_annotation_files(slicing = None, orientation = None,
   
 
 def format_annotation_filename(filename, orientation = None, slicing = None, postfix = None, directory = None):
-  """Formats the annotation filename given oriantion and slicing.""" 
+  """Formats the annotation filename given orientation and slicing.""" 
   
   if postfix is None:
     orientation = res.format_orientation(orientation, default=(1,2,3));
