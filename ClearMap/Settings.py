@@ -64,7 +64,7 @@ test_data_path = os.path.join(test_path, 'Data');
 ###############################################################################
 
 elastix_path = os.path.join(external_path, 'elastix/build');
-"""Absolue path to the elastix installation
+"""Absolute path to the elastix installation
 
 Note
 ----
@@ -76,11 +76,11 @@ tera_stitcher_path = None;
 
 Note
 ----
-  `TeraSticher Webpage <http://abria.github.io/TeraStitcher/>`_
+  `TeraStitcher Webpage <http://abria.github.io/TeraStitcher/>`_
 """
 
 imagej_path = None; # '/usr/local/Fiji.app';
-"""Absolue path to the ImageJ/Fiji installation
+"""Absolute path to the ImageJ/Fiji installation
 
 Note
 ----
