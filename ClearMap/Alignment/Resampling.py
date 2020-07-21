@@ -70,7 +70,7 @@ def format_orientation(orientation, inverse = False, default = None):
       orientation = (-1,2,3);
       
   if orientation is not None and len(orientation) != 3:
-    raise ValueError("orientation should be 'left', 'right' or a tuple of 3 intergers from 1 to 3, signed, found %r" % (orientation,))
+    raise ValueError("orientation should be 'left', 'right' or a tuple of 3 integers from 1 to 3, signed, found %r" % (orientation,))
   
   if inverse:
     orientation = inverse_orientation(orientation);
@@ -100,7 +100,7 @@ def inverse_orientation(orientation):
   if orientation is None:
       return None;
   
-  #orientation is defined as permuting the axes and then inverrting the axis
+  #orientation is defined as permuting the axes and then inverting the axis
   inv = list(orientation);
   for i,o in enumerate(orientation):
     if o < 0:
@@ -112,7 +112,7 @@ def inverse_orientation(orientation):
 
 
 def orientation_to_permuation(orientation, inverse = False):
-  """Extracts the permuation from an orientation.
+  """Extracts the permutation from an orientation.
   
   Arguments
   ---------
@@ -123,7 +123,7 @@ def orientation_to_permuation(orientation, inverse = False):
       
   Returns
   -------
-  permuation : tuple of ints
+  permutation : tuple of ints
     The premutation sequence.
       
   See Also
@@ -198,7 +198,7 @@ def resample_shape(source_shape, sink_shape = None, source_resolution = None, si
   source_shape : tuple
     The shape the source.
   sink_shape : tuple or None
-    The shape of the resmapled sink.
+    The shape of the resampled sink.
   source_resolution : tuple or None
     The resolution of the source.
   sink_resolution : tuple or None
@@ -260,7 +260,7 @@ def resample_shape(source_shape, sink_shape = None, source_resolution = None, si
     source_shape = tuple([int(np.ceil(sink_shape[i] *  float(sink_resolution[i])/float(source_resolutionO[i]))) for i in range(ndim)]);  
     source_shape = orient_shape(source_shape, orientation, inverse=True);
      
-  #calculate effecive resolutions
+  #calculate effective resolutions
   if source_resolution is None:
     if sink_resolution is None:
       source_resolution = (1,1,1);
@@ -284,7 +284,7 @@ def resample_factor(source_shape, sink_shape = None, source_resolution = None, s
   source_shape : tuple
     The shape the source.
   sink_shape : tuple or None
-    The shape of the resmapled sink.
+    The shape of the resampled sink.
   source_resolution : tuple or None
     The resolution of the source.
   sink_resolution : tuple or None
@@ -330,7 +330,7 @@ def resample(source, sink = None, orientation = None,
   sink : str or None
     The sink for the resampled image.
   orientation : tuple or None:
-    The orientation specified by permuation and change in sign of (1,2,3).
+    The orientation specified by permutation and change in sign of (1,2,3).
   sink_shape : tuple or None
     The target shape of the resampled sink.
   source_resolution : tuple or None
@@ -338,20 +338,20 @@ def resample(source, sink = None, orientation = None,
   sink_resolution : tuple or None
     The resolution of the resampled source (in length per pixel).
   interpolation : str 
-    The method to use for interpolating to the resmapled array.
+    The method to use for interpolating to the resampled array.
   axis_order : str, list of tuples of int or None
     The axes pairs along which to resample the data at each step.
-    If None, this is detertmined automatically. For a FileList source, 
+    If None, this is determined automatically. For a FileList source, 
     setting the first tuple should point to axis not indicating files.
     If 'size' the axis order is determined automatically to maximally reduce 
-    the size of the array in each resmapling step.
+    the size of the array in each resampling step.
     If 'order' the axis order is chosed automatically to optimize io speed.
   method : 'shared' or 'memmap'
     Method to handle intermediate resampling results. If 'shared' use shared 
     memory, otherwise use a memory map on disk.
   processes : int, None or 'serial'
     Number of processes to use for parallel resampling, if None use maximal 
-    processes avaialable, if 'serial' process in serial.
+    processes available, if 'serial' process in serial.
   verbose : bool
     If True, display progress information.
   
@@ -395,7 +395,7 @@ def resample(source, sink = None, orientation = None,
   if not isinstance(processes, int) and processes != 'serial':
     processes = io.mp.cpu_count();
   
-  #detemine order of resampling
+  #determine order of resampling
   axes_order, shape_order = _axes_order(axes_order, source, sink_shape_in_source_orientation, order=order);
   #print(axes_order, shape_order) 
   
@@ -675,12 +675,12 @@ def resample_inverse(source, sink = None,
   Arguments
   ---------
   source : str, array
-    Source to be inversly resampled (e.g. sink in :func:`resample`).
+    Source to be inversely resampled (e.g. sink in :func:`resample`).
   sink : str or None
-    Sink to write the inversly resampled image to.
+    Sink to write the inversely resampled image to.
   resample_source : str, array or None
     Optional source in :func:`resample`.
-  resmaple_sink: str, array or None
+  resample_sink: str, array or None
     Optional sink used in :func:`resample`.
   orientation : tuple
     Orientation as specified as in :func:`resample`.
@@ -691,8 +691,8 @@ def resample_inverse(source, sink = None,
   sink_resolution : tuple or None
     Optional value of sink_resolution as in :func:`resample`.
   processing_directory : str or None
-    Optional directory in which to perform resmapling in parallel.
-    If None, a temporary directry will be created.
+    Optional directory in which to perform resampling in parallel.
+    If None, a temporary directory will be created.
   axis_order : list of tuples of int or None
     The axes pairs along which to resample the data as in :func:`resample`.
   method : 'shared' or 'memmap'
@@ -713,7 +713,7 @@ def resample_inverse(source, sink = None,
   Notes
   -----
   * All arguments, except source and sink should be passed as :func:`resample`
-    to invert the resmapling.
+    to invert the resampling.
   """   
   source = io.as_source(source);
   ndim = source.ndim;
@@ -835,7 +835,7 @@ def resample_points(source, sink = None, resample_source = None, resample_sink =
   source : str or array
     Points to be resampled.
   sink : str or None
-    Sink for the resmapled point coordinates.
+    Sink for the resampled point coordinates.
   orientation : tuple
     Orientation as specified in :func:`resample`.
   resample_source : str, array or None
@@ -851,7 +851,7 @@ def resample_points(source, sink = None, resample_source = None, resample_sink =
       
   Returns
   -------
-  resmapled : array or str
+  resampled : array or str
     Sink for the resampled point coordinates.
 
   Notes
@@ -860,7 +860,7 @@ def resample_points(source, sink = None, resample_source = None, resample_sink =
     in :func:`resample`.
   * The arguments should be passed exactly as in :func:`resample` except soure
     and sink that point to the point sources. 
-    Use resample_source and resmaple_sink to pass the source and sink values
+    Use resample_source and resample_sink to pass the source and sink values
     used in :func:`resample`.
   """
   #orientation
@@ -937,7 +937,7 @@ def resample_points_inverse(source, sink = None, resample_source = None, resampl
       
   Returns
   -------
-  resmapled : array or str
+  resampled : array or str
     Sink for the inversly resampled point coordinates.
 
   Notes
@@ -946,7 +946,7 @@ def resample_points_inverse(source, sink = None, resample_source = None, resampl
     an image in :func:`resample`, i.e. to func:`resample_inverse`
   * The arguments should be passed exactly as in :func:`resample` except source
     and sink that point to the point sources. 
-    Use resample_source and resmaple_sink to pass the source and sink values
+    Use resample_source and resample_sink to pass the source and sink values
     used in :func:`resample`.
   """
   #orientation
