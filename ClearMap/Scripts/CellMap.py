@@ -289,7 +289,8 @@ if __name__ == "__main__":
   
   source = ws.source('cells');
   header = ', '.join([h[0] for h in source.dtype.names]);
-  np.savetxt(ws.filename('cells', extension='csv'), source[:], header=header, delimiter=',')
+  fmt = '%.18e,%.18e,%.18e,%.18e,%.18e,%.18e,%.18e,%.18e,%.18e,%s';
+  np.savetxt(ws.filename('cells', extension='csv'), source[:], fmt=fmt, header=header, delimiter=',')
   
   #%% ClearMap 1.0 export
   
