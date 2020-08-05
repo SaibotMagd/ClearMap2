@@ -739,7 +739,7 @@ if __name__ == '__main__':
   gs = grt.sub_slice((slice(1,300), slice(270,280), slice(1,240)));
                     
   #Midline
-  gs = gr.sub_slice((slice(500,1500), slice(3000,4000), slice(2910,2960)));                  
+  gs = grt.sub_slice((slice(500,1500), slice(3000,4000), slice(2910,2960)));                  
                     
   #%% Visualization - sub graphs with veins and arteries
   
