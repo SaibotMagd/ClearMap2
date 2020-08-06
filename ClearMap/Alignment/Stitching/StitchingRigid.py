@@ -114,7 +114,7 @@ class Region(object):
     Returns
     -------
     lower : array of int
-      The coordinates of the lower corner of the source's placment.
+      The coordinates of the lower corner of the source's placement.
     """
     return self.position;
     
@@ -130,7 +130,7 @@ class Region(object):
     Returns
     -------
     upper : array of int
-      The coordinates of the upper corner of the source's placment.
+      The coordinates of the upper corner of the source's placement.
     """
     return tuple(p + s for p,s in zip(self.position, self.shape));
     
@@ -163,7 +163,7 @@ class Region(object):
     Returns
     -------
     origin : tuple of ints
-      The rectified position, i.e. coordiantes below zero are set to zero.
+      The rectified position, i.e. coordinates below zero are set to zero.
     """
     return tuple(p if p >= 0 else 0 for p in self.position);
     
@@ -213,7 +213,7 @@ class Region(object):
 
   
   def coordinate_to_local(self, coordinate, axis):
-    """Converts a coordinate along an axis to the a local coordinate.
+    """Converts a coordinate along an axis to a local coordinate.
     
     Arguments
     ---------
@@ -231,7 +231,7 @@ class Region(object):
     
   
   def coordinate_from_local(self, loacl_coordinate, axis):
-    """Converts a local coordainte along an axis to the non-local coordinate.
+    """Converts a local coordinate along an axis to the non-local coordinate.
     
     Arguments
     ---------
@@ -439,7 +439,7 @@ class Source(SourceRegion, src.AbstractSource):
 
     shape = source.shape; 
     if shape is None:
-      raise ValueError('Cannot initilaize source without a shape!');    
+      raise ValueError('Cannot initialize source without a shape!');    
     
     if position is None:
       position = (0,) * len(shape);
@@ -547,7 +547,7 @@ class Source(SourceRegion, src.AbstractSource):
     
     if local_coordinate is None:
       if coordinate is None:
-        raise ValueError('Either a coordiante or a base_coordainte needs to be given!');
+        raise ValueError('Either a coordinate or a base_coordinate needs to be given!');
       local_coordinate = self.coordinate_to_local(coordinate, axis=axis);
     
     if not 0 <= local_coordinate < self.shape[axis]:
@@ -584,7 +584,7 @@ class Source(SourceRegion, src.AbstractSource):
   #  print 'getattr', self.__class__, name
   #  print self._source.__class__
   #  if not hasattr(self._source, name):
-  #    raise AttributeError('The source does not have the atrribute %s!' % name);
+  #    raise AttributeError('The source does not have the attribute %s!' % name);
   #  return getattr(self._source, name);
 
 
@@ -705,7 +705,7 @@ class Slice(slc.Slice, SourceRegion):
 
 
 def _source_string(self):
-  """Helper to generate a string describing a source with positional infomration."""
+  """Helper to generate a string describing a source with positional information."""
   try:
     name = self.name;
     name = '%s' % name if name is not None else '';
@@ -1620,13 +1620,13 @@ class Layout(SourceRegion, src.AbstractSource):
       The approximate overlaps of the sources in the tiling dimensions to use 
       for mip projection when aligning the axis.
     max_shifts : tuple of ints
-      The minmal and maximal shifts along all axes consider.
+      The minimal and maximal shifts along all axes consider.
     axis : int
-      The axis to aling the sources along.
+      The axis to aligning the sources along.
     axis_range : tuple of int or None
       If not None, use only a sub set of the axis range to speed up processing.
     clip : number or None
-      If not None, clip the soruces at this value when calculating the alignment.
+      If not None, clip the sources at this value when calculating the alignment.
     background : number or None
       If not None, if the values in the overlap region are less than this number make alignment return -inf quality as there is no signal to use for alignment. 
     processes : int or 'serial' 
@@ -1789,7 +1789,7 @@ class Layout(SourceRegion, src.AbstractSource):
     cmap : colormap
       The color map to use to color the regions.
     annotate : bool
-      Use annotaton or not.
+      Use annotation or not.
     axes : tuple of ints
       Axes to use if sources are larger than 2d.
     """
@@ -1883,7 +1883,7 @@ class TiledLayout(Layout):
     expression : str or None
       If sources is None, use this expression to a list of files to generate the sources.
     tile_axes : str or None
-      If expression is given, use this ordering of the tag names in expression to consturct the tiling grid.
+      If expression is given, use this ordering of the tag names in expression to construct the tiling grid.
     tile_shape : tuple of ints or None
       Optional shape of the grid.
     tile_positions : list of tuple of ints or None
@@ -1903,7 +1903,7 @@ class TiledLayout(Layout):
     """
     
     if expression is None and sources is None:
-      raise ValueError('Either exprssion or sources must be given!');
+      raise ValueError('Either expression or sources must be given!');
     
     if expression is not None:
       sources, alignments, tile_positions = _initialize_tiles_from_expression(expression, tile_axes=tile_axes, tile_shape=tile_shape, tile_positions=tile_positions, overlaps=overlaps, positions=positions, alignments=alignments);
@@ -1953,7 +1953,7 @@ class TiledLayout(Layout):
     Arguments
     ---------
     source : Source class or int
-      The souce or id of the source to map to a grid position.
+      The source or id of the source to map to a grid position.
     
     Returns
     -------
@@ -2057,7 +2057,7 @@ class TiledLayout(Layout):
   
 
   def alignment_from_tile_positions(self, tile_position1, tile_position2):
-    """Returns the alignemtn between two tiles if exists..
+    """Returns the alignment between two tiles if exists..
     
     Arguments
     ---------
@@ -2111,7 +2111,7 @@ class TiledLayout(Layout):
     max_shifts : tuple or list of tuple of ints
       The maximal shifts along the axes directions.
     clip : number or None
-      If not None, clip the soruces at this value when calculating the alignment.
+      If not None, clip the sources at this value when calculating the alignment.
     background : number or None
       If not None, if the values in the overlap region are less than this number make alignment return -inf quality as there is no signal to use for alignment.
     processes : int or 'serial' 
@@ -2131,7 +2131,7 @@ class TiledLayout(Layout):
 
 
 def _center_tile(tile_positions):
-  """helper to calucalte the most central tile in a list of tile positions."""
+  """helper to calculate the most central tile in a list of tile positions."""
   tdim = len(tile_positions[0]);
   tpos = np.array(tile_positions, dtype=int);
   for d in range(tdim):
@@ -2631,7 +2631,7 @@ def align_2_sources(src1, src2, max_shifts = 10, clip = None, background = None,
       quality = -np.inf;
       return shift, quality;
   
-  # ensure doulbe images for fft
+  # ensure double images for fft
   i1 = np.asarray(i1, dtype = float);
   i2 = np.asarray(i2, dtype = float);
   
@@ -2936,7 +2936,7 @@ def max_intensity_projection(data, axis = 0, function = np.max):
 
 
 def align_2_sources_along_axis_mip(src1, src2, axis = 2, depth = 10, max_shifts = 10, clip = None, background = None, verbose = False, with_mip = False):
-  """Align 2 images orthogonal to a spcified axis using max projection
+  """Align 2 images orthogonal to a specified axis using max projection
   
   Arguments
   ---------
@@ -2949,13 +2949,13 @@ def align_2_sources_along_axis_mip(src1, src2, axis = 2, depth = 10, max_shifts 
   max_shifts: tuple of int
     The minimum and maximum shifts along the axes.
   clip : number or None
-    If not None, clip the soruces at this value when calculating the alignment.
+    If not None, clip the sources at this value when calculating the alignment.
   background : number or None
     If not None, if the values in the overlap region are less than this number make alignment return -inf quality as there is no signal to use for alignment.
   verbose : bool 
     If True, print progress information.
   with_mip: bool
-    If True, also return the maximum projections used to aling the two sources.
+    If True, also return the maximum projections used to aligning the two sources.
         
   Returns
   -------
@@ -3029,7 +3029,7 @@ def align_layout(layout, max_shifts = 10, clip = None, background = None, proces
   max_shifts : int, tuple of ints or list of list of tuple of ints
     The maximal shifts of the images with respect to each other along each dimension.
   clip : number or None
-    If not None, clip the soruces at this value when calculating the alignment.
+    If not None, clip the sources at this value when calculating the alignment.
   background : number or None
     If not None, if the values in the overlap region are less than this number make alignment return -inf quality as there is no signal to use for alignment.
   processes : int or 'serial'
@@ -3102,7 +3102,7 @@ def align_layout_on_tiling(layout, overlaps = 10, max_shifts = 10, clip = None, 
   max_shifts : tuple or list of tuple of ints
     The maximal shifts along the axes directions.
   clip : number or None
-    If not None, clip the soruces at this value when calculating the alignment.
+    If not None, clip the sources at this value when calculating the alignment.
   background : number or None
     If not None, if the values in the overlap region are less than this number make alignment return -inf quality as there is no signal to use for alignment.
   processes : int or 'serial' 
@@ -3191,7 +3191,7 @@ def align_layout_axis(layout, axis = 2, depth = 10, max_shifts = 10, axis_range 
   axis_range : tuple of int or None
     Use only a sub set of the axis range to speed up processing.
   clip : number or None
-    If not None, clip the soruces at this value when calculating the alignment.
+    If not None, clip the sources at this value when calculating the alignment.
   background : number or None
     If not None, if the values in the overlap region are less than this number make alignment return -inf quality as there is no signal to use for alignment. 
   processes : int or 'serial' 
@@ -3323,7 +3323,7 @@ def align_layout_rigid_mip(layout, depth = 10, max_shifts = 10, ranges = None, c
     The approximate overlaps of the images in the different dimensions to use for mip projection.
     Only the depth parameter along the relevant axis is used.
   max_shifts : tuple of ints
-    The minmal and maximal shift in to consider.
+    The minimal and maximal shift in to consider.
   axis_range : tuple of int or None
     Use only a sub set of the axis range to speed up processing.
   clip : number or None
@@ -4118,7 +4118,7 @@ def _add_overlap_region(regions, region):
         for s in split:
           s.sources = rc.sources;
         
-        #add id of immage to add to overlapping region 
+        #add id of image to add to overlapping region 
         #-> cannot overlap with other region -> safe to put into new list
         sources = split[0].sources;
         sources += tuple(s for s in ra.sources if s not in sources);
@@ -4209,7 +4209,7 @@ def stitch_weights(shape):
   Returns
   -------
   weights : array
-    The weigthsfor the pixels of the source.
+    The weigths for the pixels of the source.
   """ 
   ranges = [np.arange(s) for s in shape];
   mesh = np.meshgrid(*ranges, indexing = 'ij');
@@ -4437,7 +4437,7 @@ def stitch_layout(layout, sink = None, method = 'interpolation', verbose = False
 ########################################################################################
 
 def overlay_sources(sources, colors = None, percentile = 98, normalize = True):
-  """Overlays the sources to check thier placement.
+  """Overlays the sources to check their placement.
   
   Arguments
   ---------
@@ -4625,7 +4625,7 @@ def plot_regions(regions, sources = None, cmap = plt.cm.rainbow, annotate = True
   cmap : colormap
     The color map to use to color the regions.
   annotate : bool
-    Use annotaton or not.
+    Use annotation or not.
   """
   if len(regions) == 0:
     return;
